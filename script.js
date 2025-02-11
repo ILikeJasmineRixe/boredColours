@@ -26,8 +26,10 @@ function getColor() {
 
 function average() {
     let { color, hex } = getColor();
+    
         document.body.style.backgroundColor = hex;
         bigButtonBoi.innerHTML = color;
+        bigButtonBoi.style.fontFamily = randomFont;
         heheTextVal++;
         localStorage.setItem("heheTextVal", heheTextVal);
         number.innerHTML = heheTextVal; 
@@ -37,11 +39,14 @@ bigButtonBoi.addEventListener('click', () => {
     average(bigButtonBoi);
 });
 
+let colorRotations;
+
 superCoolButton.addEventListener('click', () => {
+    colorRotations = Math.floor(Math.random() * 250)
     document.body.style.transition = 'background-color 0.1s ease-in-out';
     let count = 0;
     let interval = setInterval(() => {
-        if (count >= 100) {
+        if (count >= colorRotations) {
             clearInterval(interval);
             superCoolButton.innerHTML = 'Loopdy Loop'
         } else {
